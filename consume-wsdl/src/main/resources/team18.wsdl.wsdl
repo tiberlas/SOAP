@@ -1,0 +1,144 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://uns.ac.rs/xml/team18" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uns.ac.rs/xml/team18" targetNamespace="http://uns.ac.rs/xml/team18">
+  <wsdl:types>
+    <xs:schema xmlns:t="http://uns.ac.rs/xml/team18" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://uns.ac.rs/xml/team18" version="1.0">
+        
+  
+  
+  <xs:element name="getCourseRequest" type="t:getCourseRequest"/>
+        
+  
+  
+  <xs:element name="getCourseResponse" type="t:getCourseResponse"/>
+        
+  
+  
+  <xs:element name="getProfileRequest" type="t:getProfileRequest"/>
+        
+  
+  
+  <xs:complexType name="getCourseRequest">
+                
+    
+    
+    <xs:sequence>
+                        
+      
+      
+      <xs:element name="course" type="xs:string"/>
+                        
+      
+      
+      <xs:element maxOccurs="unbounded" name="profiles" type="t:getProfileRequest"/>
+                      
+    
+    
+    </xs:sequence>
+              
+  
+  
+  </xs:complexType>
+        
+  
+  
+  <xs:complexType name="getProfileRequest">
+                
+    
+    
+    <xs:sequence>
+                        
+      
+      
+      <xs:element name="profileName" type="xs:string"/>
+                      
+    
+    
+    </xs:sequence>
+              
+  
+  
+  </xs:complexType>
+        
+  
+  
+  <xs:complexType name="getCourseResponse">
+                
+    
+    
+    <xs:sequence>
+                        
+      
+      
+      <xs:element name="id" type="xs:long"/>
+                        
+      
+      
+      <xs:element name="courseName" type="xs:string"/>
+                        
+      
+      
+      <xs:element name="description" type="xs:string"/>
+                        
+      
+      
+      <xs:element name="created" type="xs:dateTime"/>
+                      
+    
+    
+    </xs:sequence>
+              
+  
+  
+  </xs:complexType>
+      
+
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCourseResponse">
+    <wsdl:part element="tns:getCourseResponse" name="getCourseResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourseRequest">
+    <wsdl:part element="tns:getCourseRequest" name="getCourseRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfileRequest">
+    <wsdl:part element="tns:getProfileRequest" name="getProfileRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Team18Port">
+    <wsdl:operation name="getCourse">
+      <wsdl:input message="tns:getCourseRequest" name="getCourseRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCourseResponse" name="getCourseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <wsdl:input message="tns:getProfileRequest" name="getProfileRequest">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Team18PortSoap11" type="tns:Team18Port">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCourse">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCourseRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCourseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getProfileRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Team18PortService">
+    <wsdl:port binding="tns:Team18PortSoap11" name="Team18PortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
