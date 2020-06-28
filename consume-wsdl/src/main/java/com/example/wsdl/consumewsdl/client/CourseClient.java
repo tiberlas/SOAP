@@ -13,10 +13,6 @@ import java.util.Set;
 
 public class CourseClient extends WebServiceGatewaySupport {
 
-    @Autowired
-    private Jaxb2Marshaller marshaller;
-
-
     public GetCourseResponse getCourse(String course) {
         GetCourseRequest request = new GetCourseRequest();
 

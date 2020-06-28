@@ -19,7 +19,7 @@ public class CountryClientConfig {
     @Bean
     public CourseClient courseClient(Jaxb2Marshaller marshaller) {
         CourseClient client = new CourseClient();
-        client.setDefaultUri("http://localhost:8080/ws");
+        //client.setDefaultUri("http://localhost:8080/ws"); //hardcodovana putanja
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;

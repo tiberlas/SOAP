@@ -19,6 +19,8 @@ public class TestController {
     @GetMapping("/test")
     public ResponseEntity<String> test() {
 
+        client.setDefaultUri("http://localhost:8080/ws"); //dinamicki moze da se menja putanja
+
         GetCourseResponse ret = client.getCourse("TEST COURSE");
         System.out.println("RESPONSE: " + ret);
         System.out.println("RESPONSE NAME: " + ret.getCourseName());
